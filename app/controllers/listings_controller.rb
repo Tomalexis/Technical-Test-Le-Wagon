@@ -33,7 +33,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing = Listing.find(params[:id])
     @listing.destroy
-    redirect_to listing_path, status: :see_other
+    redirect_to listings_path, status: :see_other
   end
 
   private

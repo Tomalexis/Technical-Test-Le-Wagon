@@ -1,0 +1,17 @@
+<h1>This is the listings index page</h1>
+
+<div class="container">
+  <%= link_to 'Add a listing', new_listing_path, class:'btn-flat' %>
+</div>
+
+<div>
+  <ol>
+  <%= @listings.each do |listing| %>
+    <li>
+      <%= link_to listing_path(listing) do %>
+        <%= "Listing n°#{listing.id}" %>
+      <% end %>
+    </li>
+  <% end %>
+  </ol>
+</div>

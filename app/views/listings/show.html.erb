@@ -1,0 +1,40 @@
+<h1>This is the show page</h1>
+
+<div>
+  <%= "Number of rooms: #{@listing.num_rooms}" %>
+  <br>
+  <h1>Reservations:</h1>
+  <ul>
+    <%= @listing.reservations.each do |reservation| %>
+      <li><%= "Start Date: #{reservation.start_date}" %></li>
+      <li><%= "End Date: #{reservation.end_date}" %></li>
+    <% end %>
+  </ul>
+  <br>
+  <h1>Bookings:</h1>
+  <ul>
+    <%= @listing.bookings.each do |booking| %>
+      <li><%= "Start Date: #{booking.start_date}" %></li>
+      <li><%= "End Date: #{booking.end_date}" %></li>
+    <% end %>
+  </ul>
+  <h1>Missions:</h1>
+  <ul>
+    <% if @listing.missions.empty? %>
+      <%= "There is currently no mission !" %>
+    <% end %>
+    <%= @listing.missions.each do |mission| %>
+      <li><%= "Mission Type: #{mission.mission_type}" %></li>
+      <li><%= "Date: #{mission.date}" %></li>
+      <li><%= "Price: #{mission.price}" %></li>
+    <% end %>
+  </ul>
+</div>
+<br>
+<div>
+  <%= link_to 'Back', listings_path, class:'btn btn-flat mb-5 ms-5' %>
+</div>
+
+<div>
+  <%= link_to 'Delete this listing', listing_path(@listing), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:'btn btn-flat ms-5' %>
+</div>
